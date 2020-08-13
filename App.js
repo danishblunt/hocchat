@@ -9,6 +9,9 @@
 import React from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
 
+// component imports
+import Login from './components/login'
+
 import {
   Header,
   LearnMoreLinks,
@@ -19,7 +22,8 @@ import {
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <Login />
+    /*<>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
@@ -59,7 +63,7 @@ const App: () => React$Node = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </>*/
   )
 }
 

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1019649368804",
+    "firebase_url": "https://hocchat-ef691.firebaseio.com",
+    "project_id": "hocchat-ef691",
+    "storage_bucket": "hocchat-ef691.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019649368804:android:bc9c83b2ac79da14f942f1",
+        "android_client_info": {
+          "package_name": "com.hocchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019649368804-09hgja5bod4902os855rvbjji2lfm3q8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hocchat",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1019649368804-e5738lkp357m82jjr2pjf97ml9ih0t51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbGN-ou6Ol7HQXdAUtyJHW3BUQ6KUxQwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019649368804-e5738lkp357m82jjr2pjf97ml9ih0t51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
