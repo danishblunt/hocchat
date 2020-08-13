@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin'
 
-export default googleLoginButton = () => {
+export default googleLoginButton = ({ navigation }) => {
   //state for data and such
   const [googleSignInProcess, setGoogleSignInProcess] = useState(false)
   const [userData, setUserData] = useState([])
@@ -31,6 +31,7 @@ export default googleLoginButton = () => {
       }
       setUserData(responseData)
       setGoogleSignInProcess(false)
+      navigation.navigate('ChatOverviews')
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('User cancelled login process')
