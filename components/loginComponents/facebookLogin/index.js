@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { LoginButton, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
 
-export default facebookLoginButton = () => {
+export default facebookLoginButton = ({ navigation }) => {
   // state for user data
   const [FacebookLoginData, setFacebookLoginData] = useState([])
 
@@ -40,8 +40,8 @@ export default facebookLoginButton = () => {
             AccessToken.getCurrentAccessToken().then((userData) => {
               const accessToken = userData.accessToken.toString()
               GetInformationFromToken(accessToken)
-              console.log('Logging' + FacebookLoginData)
             })
+            navigation.navigate('ChatOverviews')
           }
         }}
         onLogoutFinished={() => alert('User logged out')}

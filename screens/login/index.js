@@ -1,10 +1,10 @@
 import React, { useEffect, use } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
-import FacebookLoginButton from '../loginComponents/facebookLogin'
-import GoogleLoginButton from '../loginComponents/googleLogin'
+import FacebookLoginButton from '../../components/loginComponents/facebookLogin'
+import GoogleLoginButton from '../../components/loginComponents/googleLogin'
 
-export default LoginScreen = () => {
+export default LoginScreen = ({ navigation }) => {
   useEffect(() => {
     SplashScreen.hide()
   }, [])
@@ -12,8 +12,8 @@ export default LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.loginText}>Please login via Social Media</Text>
-      <FacebookLoginButton />
-      <GoogleLoginButton />
+      <FacebookLoginButton navigation={navigation} />
+      <GoogleLoginButton navigation={navigation} />
     </View>
   )
 }
