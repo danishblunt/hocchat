@@ -1,5 +1,5 @@
-import React, { useEffect, use } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useEffect } from 'react'
+import { View, Text, StyleSheet, Button } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import FacebookLoginButton from '../../components/loginComponents/facebookLogin'
 import GoogleLoginButton from '../../components/loginComponents/googleLogin'

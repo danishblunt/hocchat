@@ -4,7 +4,6 @@ import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google
 export default googleLoginButton = ({ navigation }) => {
   //state for data and such
   const [googleSignInProcess, setGoogleSignInProcess] = useState(false)
-  const [userData, setUserData] = useState([])
 
   //loading configuration once
   useEffect(() => {
@@ -25,13 +24,12 @@ export default googleLoginButton = ({ navigation }) => {
       setGoogleSignInProcess(true)
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
-      let responseData = {
+      let userData = {
         first_name: userInfo.user.givenName,
         last_name: userInfo.user.familyName,
       }
-      setUserData(responseData)
       setGoogleSignInProcess(false)
-      navigation.navigate('ChatOverviews')
+      navigation.navigate('ChatOverviews', userData)
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('User cancelled login process')
