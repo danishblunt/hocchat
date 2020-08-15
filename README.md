@@ -1,9 +1,7 @@
 # hocchat
 
-Vanilla React Native Chat
-
-First app created with Vanilla React Native & Firebase, Android Only, IOS untouched.
-
+Vanilla React Native Chat<br />
+First app created with Vanilla React Native & Firebase, Android Only, IOS untouched.<br /><br />
 Known bugs and W.I.P
 bugs:
 1.) Facebook login not working 100%
