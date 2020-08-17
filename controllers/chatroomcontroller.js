@@ -23,7 +23,6 @@ export const getChatRooms = async () => {
 
 //get messagges and content
 export const getChatRoomContentByID = async (ChatRoomID, limit = 0) => {
-  console.log('called')
   if (limit === 0) limit = DEFAULT_LIMIT
   let ChatRoomContent = []
   if (ChatRoomID === undefined || ChatRoomID === null || ChatRoomID === '')
