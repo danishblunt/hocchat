@@ -8,10 +8,10 @@ bugs:<br />
 
 W.I.P<br />
 1.) Adding push notification<br />
-2.) Adding pull down update based on last update in chatrooms<br />
-3.) Load more messages when scrolling up<br />
-4.) Upload & showcase of images<br />
-5.) Finetuning, cleanups, optimizations, design more pleasing<br /><br />
+2.) Load more messages when scrolling up<br />
+3.) Upload & showcase of images<br />
+  3a) Resolve URI permission issues<br />
+4.) Finetuning, cleanups, optimizations, design more pleasing<br /><br />
 
 Structure:<br />
 Controllers -> Data handling and Database calls<br />
@@ -21,5 +21,4 @@ components -> Components for each screen to use<br />
 screens -> Each screen as a view<br />
 services -> Services for API handling and such<br /><br />
 
-Total Time used @ 15.08.2020 @ 22:20 15hours 18minutes.<br />
-ETA for testing Beta Monday @ 17:00<br />
+Total Time used @ 17.08.2020 @ 16:38 20hours 11minutes.<br />
