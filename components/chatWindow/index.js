@@ -52,6 +52,7 @@ export default function ChatWindow({ route, navigation }) {
 
   return (
     <GiftedChat
+      renderUsernameOnMessage={true}
       messages={messages}
       onSend={(messages) => onSend(messages)}
       user={{
