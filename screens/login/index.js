@@ -1,11 +1,23 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, AsyncStorage } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import FacebookLoginButton from '../../components/loginComponents/facebookLogin'
 import GoogleLoginButton from '../../components/loginComponents/googleLogin'
 
 export default LoginScreen = ({ navigation }) => {
   useEffect(() => {
+    const retrieveData = async () => {
+      try {
+        const LoginData = await AsyncStorage.getItem('userLogin')
+        if (LoginData !== null) {
+          const parsedData = JSON.parse(LoginData)
+          navigation.navigate('ChatOverviews', parsedData)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    retrieveData()
     SplashScreen.hide()
   }, [])
 
