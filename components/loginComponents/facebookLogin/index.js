@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import { LoginButton, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
+import AsyncStorage from '@react-native-community/async-storage'
 
 export default facebookLoginButton = ({ navigation }) => {
   // state for user data
-  const [FacebookLoginData, setFacebookLoginData] = useState([])
+  const [userData, setFacebookLoginData] = useState([])
 
   // get Facebook data
   GetInformationFromToken = (Data) => {
-    const userData = {
+    const User = {
       fields: {
         string: 'id, first_name, last_name, middle_name',
       },
     }
     const retrieveInformation = new GraphRequest(
       '/me',
-      { Data, parameters: userData },
+      { Data, parameters: User },
       (error, Result) => {
         if (error) {
           console.log('login error:' + error)
@@ -31,17 +32,21 @@ export default facebookLoginButton = ({ navigation }) => {
       <LoginButton
         publishPermissions={['email']}
         onLoginFinished={(error, result) => {
+          console.log('LoginFinished')
           if (error) {
             alert('Login failed with error: ' + error.message)
           } else if (result.isCancelled) {
             alert('Login was cancelled')
           } else {
             // Get user data when logged in
-            AccessToken.getCurrentAccessToken().then((userData) => {
-              const accessToken = userData.accessToken.toString()
+            AccessToken.getCurrentAccessToken().then((User) => {
+              const accessToken = User.accessToken.toString()
               GetInformationFromToken(accessToken)
             })
-            navigation.navigate('ChatOverviews')
+            if (userData !== null || userData !== undefined) {
+              AsyncStorage.setItem('userLogin', JSON.stringify(userData))
+              navigation.navigate('ChatOverviews', userData)
+            }
           }
         }}
         onLogoutFinished={() => alert('User logged out')}

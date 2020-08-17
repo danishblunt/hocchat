@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin'
+import AsyncStorage from '@react-native-community/async-storage'
 
 export default googleLoginButton = ({ navigation }) => {
   //state for data and such
@@ -30,6 +31,7 @@ export default googleLoginButton = ({ navigation }) => {
       }
       setGoogleSignInProcess(false)
       navigation.navigate('ChatOverviews', userData)
+      AsyncStorage.setItem('userLogin', JSON.stringify(userData))
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('User cancelled login process')
