@@ -4,8 +4,7 @@ Vanilla React Native Chat<br />
 First app created with Vanilla React Native & Firebase, Android Only, IOS untouched.<br /><br />
 Known bugs and W.I.P<br />
 bugs:<br />
-1.) Facebook login not working 100%<br />
-2.) Arrow of 3rd text not aligning 100%<br /><br />
+1.) Arrow of 3rd text not aligning 100%<br /><br />
 
 W.I.P<br />
 1.) Adding push notification<br />
