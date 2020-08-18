@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
-import { getChatRoomContentByID, addChatMessage } from '../../controllers/chatroomcontroller'
+import { getChatRoomContentByID, addChatMessage, updateChatTimeStamp } from '../../controllers/chatroomcontroller'
 import { View, TouchableOpacity, Alert } from 'react-native'
 import { DB, FBStorage, FBListener } from '../../services/fire'
 import ImagePicker from 'react-native-image-picker'
@@ -128,6 +128,8 @@ export default function ChatWindow({ route, navigation }) {
     addChatMessage(ChatRoom.id, MessageFormatData)
     setImage(null)
     setMessages((previousMessages) => GiftedChat.append(previousMessages, messages))
+    console.log(MessageFormatData.dateTime)
+    updateChatTimeStamp(ChatRoom.id,MessageFormatData.dateTime)
   }, [])
 
   return (

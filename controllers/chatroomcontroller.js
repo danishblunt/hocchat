@@ -8,6 +8,7 @@ let DEFAULT_LIMIT = 50
 export const getChatRooms = async () => {
   let ChatRoom = []
   await DB.collection('chatRooms')
+    .orderBy('lastUpdated', 'desc')
     .get()
     .then((AllChatRooms) => {
       AllChatRooms.forEach((Chatroom) => {
@@ -52,4 +53,12 @@ export const addChatMessage = async (ChatRoomID, chatData) => {
   if (ChatRoomID === undefined || ChatRoomID === null) return console.log('Invalid Chatroom ID')
   if (chatData === undefined || chatData === null) return console.log('Invalid Data')
   await DB.collection('chatRooms').doc(ChatRoomID).collection('chatContent').add(chatData)
+}
+
+//update time
+export const updateChatTimeStamp = async (ChatRoomID, timestamp) => {
+  if (ChatRoomID === undefined || ChatRoomID === null) return console.log('Invalid Chatroom ID')
+  console.log(timestamp)
+  if (timestamp === undefined || timestamp === null) return console.log('Invalid time')
+  await DB.collection('chatRooms').doc(ChatRoomID).update({ 'lastUpdated': timestamp })
 }
