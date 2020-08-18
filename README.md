@@ -19,4 +19,4 @@ components -> Components for each screen to use<br />
 screens -> Each screen as a view<br />
 services -> Services for API handling and such<br /><br />
 
-Total Time used @ 17.08.2020 @ 16:38 22hours 7minutes.<br />
+Total Time used @ 18.08.2020 @ 10:58 22hours 7minutes.<br />
