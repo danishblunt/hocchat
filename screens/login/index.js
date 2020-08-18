@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import FacebookLoginButton from '../../components/loginComponents/facebookLogin'
 import GoogleLoginButton from '../../components/loginComponents/googleLogin'
+import AsyncStorage from '@react-native-community/async-storage'
 
 export default LoginScreen = ({ navigation }) => {
   useEffect(() => {

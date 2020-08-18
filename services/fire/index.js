@@ -1,5 +1,6 @@
 import Firebase from '@react-native-firebase/app'
 import '@react-native-firebase/firestore'
+import '@react-native-firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDwmmoX9m8FfOYsTGsB_o88Pn9YhlU7s8',
@@ -18,3 +19,5 @@ if (Firebase.apps.length == 0) {
 }
 
 export const DB = Firebase.firestore()
+export const FBStorage = Firebase.storage()
+export const FBListener = Firebase.storage.TaskEvent.STATE_CHANGED
