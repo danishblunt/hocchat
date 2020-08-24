@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Dimensions } from 'react-native'
 import { getChatRooms } from '../../controllers/chatroomcontroller'
 
 //WIDTH
