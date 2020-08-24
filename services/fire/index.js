@@ -2,6 +2,8 @@ import Firebase from '@react-native-firebase/app'
 import '@react-native-firebase/firestore'
 import '@react-native-firebase/storage'
 import messaging from '@react-native-firebase/messaging'
+import { getChatRooms } from '../../controllers/chatroomcontroller'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDwmmoX9m8FfOYsTGsB_o88Pn9YhlU7s8',
@@ -37,6 +39,21 @@ export const firebasePushSetup = async () => {
   const unsubscribe = messaging().onMessage(async (remoteMessage) => {
     console.log('FCM Message Data:', remoteMessage.data)
   })
+
+  const SubscribeIDs = await getChatRooms()
+  const CheckForSubscription = async (ID) => {
+    const subdata = await AsyncStorage.getItem(ID)
+    if (subdata !== null) {
+      messaging()
+        .subscribeToTopic(ID)
+        .then(() => {
+          console.log('subscribed to topic')
+          console.log(ID)
+        })
+    }
+  }
+
+  SubscribeIDs.map((SubscriptionItem) => CheckForSubscription(SubscriptionItem.id))
 
   return unsubscribe
 }

@@ -5,13 +5,14 @@ import {
   addChatMessage,
   updateChatTimeStamp,
 } from '../../controllers/chatroomcontroller'
-import { View, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { DB, FBStorage, FBListener } from '../../services/fire'
 import ImagePicker from 'react-native-image-picker'
 import 'react-native-get-random-values'
 import { Icon } from 'react-native-elements'
 import RNFS from 'react-native-fs'
-import { firebasePushSetup } from '../../services/fire'
+import AsyncStorage from '@react-native-community/async-storage'
+import { sendMessageToCloud } from '../../controllers/chatAPIController'
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -20,6 +21,7 @@ export default function ChatWindow({ route, navigation }) {
   const [imageurl, setImage] = useState(null)
   const { userData, ChatRoom } = route.params
   const username = userData.first_name + ' ' + userData.last_name
+  let subscribedToChat = false
 
   const convertToTimeStamp = (date) => {
     const Timestamp = date.getTime() / 1000
@@ -42,6 +44,18 @@ export default function ChatWindow({ route, navigation }) {
       }))
       setMessages(MessageData)
     }
+
+    const retrieveSubscriptionData = async () => {
+      try {
+        const subdata = await AsyncStorage.getItem(ChatRoom.id)
+        if (subdata === 'true') {
+          subscribedToChat = true
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    retrieveSubscriptionData()
 
     const unsubscribe = DB.collection('chatRooms')
       .doc(ChatRoom.id)
@@ -121,6 +135,29 @@ export default function ChatWindow({ route, navigation }) {
   }
 
   const onSend = useCallback((messages = []) => {
+    //check if subscribed
+    if (!subscribedToChat) {
+      Alert.alert(
+        'Notifications',
+        'Do you want to enable notifications for this chatroom?',
+        [
+          {
+            text: 'No',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {
+            text: 'Yes',
+            onPress: () => {
+              AsyncStorage.setItem(ChatRoom.id, 'true')
+              console.log('accepted')
+            },
+          },
+        ],
+        { cancelable: false },
+      )
+    }
+    subscribedToChat = true
     //formatted data for the database
     const MessageFormatData = {
       avatar: 'url',
@@ -132,8 +169,8 @@ export default function ChatWindow({ route, navigation }) {
     addChatMessage(ChatRoom.id, MessageFormatData)
     setImage(null)
     setMessages((previousMessages) => GiftedChat.append(previousMessages, messages))
-    console.log(MessageFormatData.dateTime)
     updateChatTimeStamp(ChatRoom.id, MessageFormatData.dateTime)
+    sendMessageToCloud(ChatRoom.id, MessageFormatData.message)
   }, [])
 
   return (
