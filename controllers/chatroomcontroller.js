@@ -53,11 +53,29 @@ export const addChatMessage = async (ChatRoomID, chatData) => {
   if (ChatRoomID === undefined || ChatRoomID === null) return console.log('Invalid Chatroom ID')
   if (chatData === undefined || chatData === null) return console.log('Invalid Data')
   await DB.collection('chatRooms').doc(ChatRoomID).collection('chatContent').add(chatData)
+  let message = {}
+  if (chatData.message !== '') {
+    message = {
+      notification: {
+        title: `New message from your chatroom`,
+        body: chatData.message,
+      },
+      topic: ChatRoomID,
+    }
+  } else {
+    message = {
+      notification: {
+        title: `New image from your chatroom`,
+        body: 'click to see the image',
+      },
+      topic: ChatRoomID,
+    }
+  }
 }
 
 //update time
 export const updateChatTimeStamp = async (ChatRoomID, timestamp) => {
   if (ChatRoomID === undefined || ChatRoomID === null) return console.log('Invalid Chatroom ID')
   if (timestamp === undefined || timestamp === null) return console.log('Invalid time')
-  await DB.collection('chatRooms').doc(ChatRoomID).update({ 'lastUpdated': timestamp })
+  await DB.collection('chatRooms').doc(ChatRoomID).update({ lastUpdated: timestamp })
 }
