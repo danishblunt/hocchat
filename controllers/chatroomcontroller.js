@@ -58,7 +58,6 @@ export const addChatMessage = async (ChatRoomID, chatData) => {
 //update time
 export const updateChatTimeStamp = async (ChatRoomID, timestamp) => {
   if (ChatRoomID === undefined || ChatRoomID === null) return console.log('Invalid Chatroom ID')
-  console.log(timestamp)
   if (timestamp === undefined || timestamp === null) return console.log('Invalid time')
   await DB.collection('chatRooms').doc(ChatRoomID).update({ 'lastUpdated': timestamp })
 }

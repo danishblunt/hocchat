@@ -1,12 +1,17 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
-import { getChatRoomContentByID, addChatMessage, updateChatTimeStamp } from '../../controllers/chatroomcontroller'
-import { View, TouchableOpacity, Alert } from 'react-native'
+import {
+  getChatRoomContentByID,
+  addChatMessage,
+  updateChatTimeStamp,
+} from '../../controllers/chatroomcontroller'
+import { View, TouchableOpacity, StyleSheet } from 'react-native'
 import { DB, FBStorage, FBListener } from '../../services/fire'
 import ImagePicker from 'react-native-image-picker'
 import 'react-native-get-random-values'
 import { Icon } from 'react-native-elements'
 import RNFS from 'react-native-fs'
+import { firebasePushSetup } from '../../services/fire'
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -20,7 +25,6 @@ export default function ChatWindow({ route, navigation }) {
     const Timestamp = date.getTime() / 1000
     return Timestamp.toFixed(0)
   }
-
   useEffect(() => {
     //fetching initial message data
     const fetchData = async () => {
@@ -108,9 +112,9 @@ export default function ChatWindow({ route, navigation }) {
 
   function renderImages() {
     return (
-      <View>
+      <View style={styles.folderIcon}>
         <TouchableOpacity onPress={() => handlePickImage()}>
-          <Icon name="folder" />
+          <Icon name="folder" type="font-awesome" />
         </TouchableOpacity>
       </View>
     )
@@ -129,7 +133,7 @@ export default function ChatWindow({ route, navigation }) {
     setImage(null)
     setMessages((previousMessages) => GiftedChat.append(previousMessages, messages))
     console.log(MessageFormatData.dateTime)
-    updateChatTimeStamp(ChatRoom.id,MessageFormatData.dateTime)
+    updateChatTimeStamp(ChatRoom.id, MessageFormatData.dateTime)
   }, [])
 
   return (
@@ -146,3 +150,12 @@ export default function ChatWindow({ route, navigation }) {
     />
   )
 }
+
+const styles = StyleSheet.create({
+  folderIcon: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginLeft: 10,
+  },
+})
