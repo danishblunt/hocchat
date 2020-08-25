@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect } from 'react'
-import NavigationStack from './routes/'
+import NavigationStack from './routes/navigationStack'
 import { firebasePushSetup } from './services/fire'
 import { getChatRooms } from './controllers/chatroomcontroller'
 import AsyncStorage from '@react-native-community/async-storage'

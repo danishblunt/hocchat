@@ -4,6 +4,7 @@ const FCMURL = 'https://fcm.googleapis.com/fcm/send'
 const FCMKEY =
   'AAAA7WfWouQ:APA91bGW5h4F1OcLde_wBydd8iN_O3Qx5Qzg9IKYqTpSvQ9mJ_jZLux_pJFB3QC-jx2sk9je98TdyRoTlQqh9VE4QLEQ3fnV9NdhZUPKsPHGiaNZaLA0fvuGKgqq8dayxVTj5dhRfJ5y'
 
+// building API request for axios post
 const buildRequest = (topic, message) => {
   const notificationData = {
     to: `/topics/${topic}`,
@@ -26,6 +27,7 @@ const buildRequest = (topic, message) => {
   }
 }
 
+// Send messages created in chatroom to clous message
 export const sendMessageToCloud = async (topic, message) => {
   if (topic === undefined || topic === null || topic === '')
     return console.log('topic is undefined')
