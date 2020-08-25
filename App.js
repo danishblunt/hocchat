@@ -9,7 +9,9 @@
 import React, { useEffect } from 'react'
 import NavigationStack from './routes/'
 import { firebasePushSetup } from './services/fire'
+import { getChatRooms } from './controllers/chatroomcontroller'
 import AsyncStorage from '@react-native-community/async-storage'
+import messaging from '@react-native-firebase/messaging'
 
 const App = () => {
   useEffect(() => {
@@ -29,6 +31,23 @@ const App = () => {
     // init pushnotification setup
     console.log('init push notification setup')
     firebasePushSetup()
+    // set subscriptions
+    const SetSubscriptions = async () => {
+      const SubscribeIDs = await getChatRooms()
+      const CheckForSubscription = async (ID) => {
+        const subdata = await AsyncStorage.getItem(ID)
+        if (subdata !== null) {
+          messaging()
+            .subscribeToTopic(ID)
+            .then(() => {
+              console.log('subscribed to topic')
+              console.log(ID)
+            })
+        }
+      }
+      SubscribeIDs.map((SubscriptionItem) => CheckForSubscription(SubscriptionItem.id))
+    }
+    SetSubscriptions()
   }, [])
   return <NavigationStack />
 }
