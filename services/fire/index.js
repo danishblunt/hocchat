@@ -19,10 +19,12 @@ if (Firebase.apps.length == 0) {
   Firebase.initializeApp(firebaseConfig)
 }
 
+// Functions used in code to interact with firebase
 export const DB = Firebase.firestore()
 export const FBStorage = Firebase.storage()
 export const FBListener = Firebase.storage.TaskEvent.STATE_CHANGED
 
+// Initializing push setup
 export const firebasePushSetup = async () => {
   const token = await messaging().getToken()
   console.log('TOKEN =', token)
