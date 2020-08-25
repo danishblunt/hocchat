@@ -4,6 +4,7 @@ import SplashScreen from 'react-native-splash-screen'
 import FacebookLoginButton from '../../components/loginComponents/facebookLogin'
 import GoogleLoginButton from '../../components/loginComponents/googleLogin'
 import AsyncStorage from '@react-native-community/async-storage'
+import { CommonActions } from '@react-navigation/native'
 
 export default LoginScreen = ({ navigation }) => {
   useEffect(() => {
@@ -12,6 +13,17 @@ export default LoginScreen = ({ navigation }) => {
         const LoginData = await AsyncStorage.getItem('userLogin')
         if (LoginData !== null) {
           const parsedData = JSON.parse(LoginData)
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [
+                {
+                  name: 'ChatOverviews',
+                  params: parsedData,
+                },
+              ],
+            }),
+          )
           navigation.navigate('ChatOverviews', parsedData)
         }
       } catch (error) {

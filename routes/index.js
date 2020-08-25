@@ -11,10 +11,7 @@ const NavigationStack = createStackNavigator()
 export default navigationContainer = () => {
   return (
     <NavigationContainer>
-      <NavigationStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
+      <NavigationStack.Navigator>
         <NavigationStack.Screen name="LoginScreen" component={LoginScreen} />
         <NavigationStack.Screen name="ChatOverviews" component={ChatOverviews} />
         <NavigationStack.Screen name="ChatWindow" component={ChatWindowScreen} />
