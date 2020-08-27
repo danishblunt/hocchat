@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin'
-import AsyncStorage from '@react-native-community/async-storage'
+import { AsyncStorage } from 'react-native'
 
 export default googleLoginButton = ({ navigation }) => {
   //state for data and such

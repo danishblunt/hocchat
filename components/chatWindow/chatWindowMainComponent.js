@@ -5,13 +5,12 @@ import {
   addChatMessage,
   updateChatTimeStamp,
 } from '../../controllers/chatroomcontroller'
-import { View, TouchableOpacity, StyleSheet, Alert } from 'react-native'
+import { View, TouchableOpacity, StyleSheet, Alert, AsyncStorage } from 'react-native'
 import { DB, FBStorage, FBListener } from '../../services/fire'
 import ImagePicker from 'react-native-image-picker'
 import 'react-native-get-random-values'
 import { Icon } from 'react-native-elements'
 import RNFS from 'react-native-fs'
-import AsyncStorage from '@react-native-community/async-storage'
 import { sendMessageToCloud } from '../../controllers/chatAPIController'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -78,9 +77,15 @@ export default ChatWindow = ({ route, navigation }) => {
 
   //Image Uploading logic
   const uploadImage = async (source) => {
+    console.log(source)
     if (source) {
       const ImageData = await RNFS.readFile(source.uri, 'base64')
-      const FileExtension = source.fileName.split('.').pop()
+      let FileExtension = ''
+      if (source.fileName !== null) {
+        FileExtension = source.fileName.split('.').pop()
+      } else {
+        FileExtension = source.type.split('/').pop()
+      }
       var uuid = uuidv4()
       const fileName = `${uuid}.${FileExtension}`
       var storageRef = FBStorage.ref(`chatImages/${fileName}`)
