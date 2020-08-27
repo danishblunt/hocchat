@@ -10,7 +10,7 @@ import React, { useEffect } from 'react'
 import NavigationStack from './routes/navigationStack'
 import { firebasePushSetup } from './services/fire'
 import { getChatRooms } from './controllers/chatroomcontroller'
-import AsyncStorage from '@react-native-community/async-storage'
+import { AsyncStorage } from 'react-native'
 import messaging from '@react-native-firebase/messaging'
 
 const App = () => {

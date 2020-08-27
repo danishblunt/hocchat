@@ -40,5 +40,15 @@ export const firebasePushSetup = async () => {
     console.log('FCM Message Data:', remoteMessage.data)
   })
 
+  //IOS related stuff for notifications
+  const authStatus = await messaging().requestPermission()
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL
+
+  if (enabled) {
+    console.log('Authorization status:', authStatus)
+  }
+
   return unsubscribe
 }

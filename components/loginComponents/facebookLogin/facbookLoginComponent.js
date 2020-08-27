@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { LoginButton, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
-import AsyncStorage from '@react-native-community/async-storage'
+import { AsyncStorage } from 'react-native'
 
 export default facebookLoginButton = ({ navigation }) => {
   // state for user data

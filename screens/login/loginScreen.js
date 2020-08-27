@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, AsyncStorage } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import FacebookLoginButton from '../../components/loginComponents/facebookLogin/facbookLoginComponent'
 import GoogleLoginButton from '../../components/loginComponents/googleLogin/googleLoginComponent'
-import AsyncStorage from '@react-native-community/async-storage'
 import { CommonActions } from '@react-navigation/native'
 
 export default LoginScreen = ({ navigation }) => {
@@ -11,7 +10,8 @@ export default LoginScreen = ({ navigation }) => {
     // If userdata exists from local device, login with those credetials
     const retrieveData = async () => {
       try {
-        const LoginData = await AsyncStorage.getItem('userLogin')
+        //const LoginData = await AsyncStorage.getItem('userLogin')
+        const LoginData = null
         if (LoginData !== null) {
           const parsedData = JSON.parse(LoginData)
           navigation.navigate('ChatOverviews', parsedData)
