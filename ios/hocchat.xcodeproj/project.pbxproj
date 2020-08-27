@@ -20,7 +20,7 @@
 		65D84172271CECD228345538 /* libPods-hocchat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4491349AA2886D7BB75C5A52 /* libPods-hocchat-tvOS.a */; };
 		BF53A10C72235AC77201AFA7 /* libPods-hocchat-hocchatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D5FA6F6E840CEE94544024 /* libPods-hocchat-hocchatTests.a */; };
 		FDD4813824F7976600C8D78B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDD4813724F7976500C8D78B /* GoogleService-Info.plist */; };
-		FDD4814724F7C42A00C8D78B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD4814624F7C42A00C8D78B /* LaunchScreen.storyboard */; };
+		FDD4814F24F7E4AF00C8D78B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD4814E24F7E4AF00C8D78B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +69,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FDD4813724F7976500C8D78B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "hocchat/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FDD4814124F7A89B00C8D78B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		FDD4814624F7C42A00C8D78B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = hocchat/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FDD4814E24F7E4AF00C8D78B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "hocchat/Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,11 +132,11 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				FDD4813724F7976500C8D78B /* GoogleService-Info.plist */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				FDD4814E24F7E4AF00C8D78B /* Launch Screen.storyboard */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				FDD4814124F7A89B00C8D78B /* FontAwesome.ttf */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				FDD4814624F7C42A00C8D78B /* LaunchScreen.storyboard */,
 			);
 			name = hocchat;
 			sourceTree = "<group>";
@@ -307,6 +307,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = GF48R8NZHF;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -353,7 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDD4814724F7C42A00C8D78B /* LaunchScreen.storyboard in Resources */,
+				FDD4814F24F7E4AF00C8D78B /* Launch Screen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				FDD4813824F7976600C8D78B /* GoogleService-Info.plist in Resources */,
 			);
@@ -756,6 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GF48R8NZHF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -783,6 +785,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GF48R8NZHF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

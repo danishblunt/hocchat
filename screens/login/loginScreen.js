@@ -10,8 +10,7 @@ export default LoginScreen = ({ navigation }) => {
     // If userdata exists from local device, login with those credetials
     const retrieveData = async () => {
       try {
-        //const LoginData = await AsyncStorage.getItem('userLogin')
-        const LoginData = null
+        const LoginData = await AsyncStorage.getItem('userLogin')
         if (LoginData !== null) {
           const parsedData = JSON.parse(LoginData)
           navigation.navigate('ChatOverviews', parsedData)
