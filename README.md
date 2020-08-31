@@ -4,7 +4,7 @@ Vanilla React Native Chat<br />
 First app created with Vanilla React Native & Firebase, Android Only, IOS untouched.<br /><br />
 
 Time spend on the project:<br />
-32hours 11minutes<br /><br />
+35hours 37minutes<br /><br />
 
 General Structure:<br />
 Components: <br />
